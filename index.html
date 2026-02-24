@@ -8,9 +8,9 @@
   <meta name="theme-color" content="#0f0f13" />
 
   <!-- Open Graph -->
-  <meta property="og:title"       content="جعبه لایتنر" />
+  <meta property="og:title" content="جعبه لایتنر" />
   <meta property="og:description" content="سیستم هوشمند مرور با فاصله" />
-  <meta property="og:type"        content="website" />
+  <meta property="og:type" content="website" />
 
   <title>جعبه لایتنر | Leitner Box</title>
 
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
+    rel="stylesheet" />
 
   <!-- Stylesheets — order matters -->
   <link rel="stylesheet" href="assets/css/variables.css" />
@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
+
+  <link rel="icon" type="image/png" href="icon_leitner_box.png">
 </head>
 
 <body>
@@ -44,8 +46,7 @@
         </div>
       </div>
       <div class="header__actions">
-        <button class="btn btn--primary btn--sm" id="btn-new-card"
-                aria-label="افزودن کارت جدید">
+        <button class="btn btn--primary btn--sm" id="btn-new-card" aria-label="افزودن کارت جدید">
           + کارت جدید
         </button>
       </div>
@@ -55,19 +56,14 @@
          NAVIGATION TABS
     ══════════════════════════════════ -->
     <nav class="tabs" role="tablist" aria-label="بخش‌های اصلی برنامه">
-      <button class="tabs__item tabs__item--active"
-              role="tab" data-tab="dashboard"
-              aria-selected="true" aria-controls="view-dashboard">
+      <button class="tabs__item tabs__item--active" role="tab" data-tab="dashboard" aria-selected="true"
+        aria-controls="view-dashboard">
         📊 داشبورد
       </button>
-      <button class="tabs__item"
-              role="tab" data-tab="review"
-              aria-selected="false" aria-controls="view-review">
+      <button class="tabs__item" role="tab" data-tab="review" aria-selected="false" aria-controls="view-review">
         🎯 مرور
       </button>
-      <button class="tabs__item"
-              role="tab" data-tab="cards"
-              aria-selected="false" aria-controls="view-cards">
+      <button class="tabs__item" role="tab" data-tab="cards" aria-selected="false" aria-controls="view-cards">
         📚 کارت‌ها
       </button>
     </nav>
@@ -75,36 +71,30 @@
     <!-- ══════════════════════════════════
          VIEW: DASHBOARD
     ══════════════════════════════════ -->
-    <section id="view-dashboard" class="view view--active"
-             role="tabpanel" aria-labelledby="tab-dashboard">
+    <section id="view-dashboard" class="view view--active" role="tabpanel" aria-labelledby="tab-dashboard">
 
       <!-- Stats Bar -->
       <div class="stats-grid" aria-label="آمار کلی">
         <div class="stat-card">
-          <div class="stat-card__value" id="stats-total"
-               style="color:var(--color-accent)">—</div>
+          <div class="stat-card__value" id="stats-total" style="color:var(--color-accent)">—</div>
           <div class="stat-card__label">کل کارت‌ها</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__value" id="stats-due"
-               style="color:var(--color-warning)">—</div>
+          <div class="stat-card__value" id="stats-due" style="color:var(--color-warning)">—</div>
           <div class="stat-card__label">آماده مرور</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__value" id="stats-mastered"
-               style="color:var(--color-success)">—</div>
+          <div class="stat-card__value" id="stats-mastered" style="color:var(--color-success)">—</div>
           <div class="stat-card__label">تسلط یافته</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__value" id="stats-box1"
-               style="color:var(--color-danger)">—</div>
+          <div class="stat-card__value" id="stats-box1" style="color:var(--color-danger)">—</div>
           <div class="stat-card__label">در جعبه ۱</div>
         </div>
       </div>
 
       <!-- Leitner Boxes -->
-      <div class="boxes-grid" id="boxes-grid"
-           aria-label="جعبه‌های لایتنر"></div>
+      <div class="boxes-grid" id="boxes-grid" aria-label="جعبه‌های لایتنر"></div>
 
       <!-- Due Today -->
       <div class="section-header">
@@ -120,22 +110,19 @@
     <!-- ══════════════════════════════════
          VIEW: REVIEW
     ══════════════════════════════════ -->
-    <section id="view-review" class="view"
-             role="tabpanel" aria-labelledby="tab-review">
+    <section id="view-review" class="view" role="tabpanel" aria-labelledby="tab-review">
     </section>
 
     <!-- ══════════════════════════════════
          VIEW: ALL CARDS
     ══════════════════════════════════ -->
-    <section id="view-cards" class="view"
-             role="tabpanel" aria-labelledby="tab-cards">
+    <section id="view-cards" class="view" role="tabpanel" aria-labelledby="tab-cards">
 
       <div class="section-header">
         <h2 class="section-title">همه کارت‌ها</h2>
         <div style="display:flex;gap:var(--space-2);align-items:center">
-          <select id="filter-box" class="form-select"
-                  style="width:auto;padding:8px 12px"
-                  aria-label="فیلتر بر اساس جعبه">
+          <select id="filter-box" class="form-select" style="width:auto;padding:8px 12px"
+            aria-label="فیلتر بر اساس جعبه">
             <option value="">همه جعبه‌ها</option>
             <option value="1">جعبه ۱ — روزانه</option>
             <option value="2">جعبه ۲ — دو روز</option>
@@ -158,12 +145,8 @@
   <!-- ══════════════════════════════════
        MODAL: ADD / EDIT CARD
   ══════════════════════════════════ -->
-  <div id="modal-overlay"
-       class="modal-overlay"
-       role="dialog"
-       aria-modal="true"
-       aria-labelledby="modal-title"
-       aria-hidden="true">
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    aria-hidden="true">
 
     <div class="modal">
       <button class="modal__close" id="modal-close" aria-label="بستن">✕</button>
@@ -174,46 +157,28 @@
           <label class="form-label" for="input-front">
             سوال (جلوی کارت) <span aria-hidden="true" style="color:var(--color-danger)">*</span>
           </label>
-          <input
-            class="form-input"
-            type="text"
-            id="input-front"
-            name="front"
-            placeholder="مثال: پایتخت آلمان چیست؟"
-            autocomplete="off"
-            required
-          />
+          <input class="form-input" type="text" id="input-front" name="front" placeholder="مثال: پایتخت آلمان چیست؟"
+            autocomplete="off" required />
         </div>
 
         <div class="form-group">
           <label class="form-label" for="input-back">
             جواب (پشت کارت) <span aria-hidden="true" style="color:var(--color-danger)">*</span>
           </label>
-          <textarea
-            class="form-textarea"
-            id="input-back"
-            name="back"
-            placeholder="مثال: برلین"
-            required
-          ></textarea>
+          <textarea class="form-textarea" id="input-back" name="back" placeholder="مثال: برلین" required></textarea>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="input-note">
             یادداشت <span style="font-weight:400;color:var(--color-text-subtle)">(اختیاری)</span>
           </label>
-          <textarea
-            class="form-textarea"
-            id="input-note"
-            name="note"
-            placeholder="توضیحات یا اطلاعات اضافی..."
-            style="min-height:64px"
-          ></textarea>
+          <textarea class="form-textarea" id="input-note" name="note" placeholder="توضیحات یا اطلاعات اضافی..."
+            style="min-height:64px"></textarea>
         </div>
       </form>
 
       <div class="modal__footer">
-        <button class="btn btn--ghost"   id="modal-cancel">انصراف</button>
+        <button class="btn btn--ghost" id="modal-cancel">انصراف</button>
         <button class="btn btn--primary" id="modal-save">💾 ذخیره</button>
       </div>
     </div>
@@ -256,4 +221,5 @@
   <script src="src/app.js"></script>
 
 </body>
+
 </html>
