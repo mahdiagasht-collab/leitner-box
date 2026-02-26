@@ -1,116 +1,114 @@
-# 🗃️ جعبه لایتنر — Leitner Box
 
-یک اپلیکیشن وب پیشرفته برای یادگیری با روش (Spaced Repetition)، بر اساس سیستم معروف **Sebastian Leitner**.
+# 🗃️ Leitner Box
 
-<br/>
-
-## 📸 پیش‌نمایش
-
-> داشبورد — نمای کلی جعبه‌ها و کارت‌های آماده مرور امروز
->
-> صفحه مرور — فلش‌کارت تعاملی با انیمیشن چرخش
->
-> مدیریت کارت‌ها — افزودن، ویرایش، فیلتر و حذف
+An advanced web application for learning with the **Spaced Repetition** method, based on the well‑known **Sebastian Leitner System**.
 
 <br/>
 
-## ✨ ویژگی‌ها
+## 📸 Preview
 
-- 📦 **۵ جعبه لایتنر** با بازه‌های مرور: روزانه، ۲ روز، ۴ روز، هفتگی، ۲ هفته‌ای
-- 🎴 **فلش‌کارت تعاملی** با انیمیشن چرخش سه‌بعدی
-- 📊 **داشبورد آماری** — تعداد کارت‌ها، آماده مرور، تسلط یافته
-- ➕ **مدیریت کامل کارت‌ها** — افزودن، ویرایش، حذف، فیلتر
-- 💾 **ذخیره‌سازی محلی** بدون نیاز به سرور یا پایگاه داده
-- ♿ **دسترس‌پذیر** — ARIA، keyboard navigation، focus management
-- 📱 **واکنش‌گرا** — سازگار با موبایل، تبلت و دسکتاپ
-- 🌙 **تم تاریک** با فونت Vazirmatn برای متن فارسی
+> Dashboard — overview of boxes and cards due for review today  
+> Review Page — interactive flashcard with flip animation  
+> Card Management — add, edit, filter, and delete cards
 
 <br/>
 
-## 🏗️ معماری
+## ✨ Features
 
-این پروژه با معماری **MVC (Model-View-Controller)** و اصول **SOLID** و **OOP** طراحی شده است.
+- 📦 **5 Leitner Boxes** with review intervals: daily, 2‑day, 4‑day, weekly, bi‑weekly  
+- 🎴 **Interactive flashcards** with 3D flip animation  
+- 📊 **Statistics dashboard** — total cards, due cards, mastered cards  
+- ➕ **Full card management** — add, edit, delete, filter  
+- 💾 **Local storage** — no server or database required  
+- ♿ **Accessible** — ARIA, keyboard navigation, focus management  
+- 📱 **Responsive** — optimized for mobile, tablet, and desktop  
+- 🌙 **Dark mode** with Vazirmatn font for Persian text
+
+<br/>
+
+## 🏗️ Architecture
+
+The project is built with **MVC (Model–View–Controller)** architecture and follows **SOLID** principles and **OOP** design.
 
 ```
 leitner-box/
-├── index.html                  # نقطه ورود — HTML معنایی
+├── index.html                  # Entry point — semantic HTML
 ├── assets/
 │   └── css/
-│       ├── variables.css       # Design Tokens — CSS Custom Properties
-│       ├── reset.css           # Modern CSS Reset + Base Styles
-│       ├── animations.css      # Keyframes & Motion
-│       ├── layout.css          # App Shell, Grid, Views
-│       └── components.css      # Buttons, Cards, Forms, Modal, Toast
+│       ├── variables.css       # Design tokens — CSS custom properties
+│       ├── reset.css           # Modern CSS reset + base styles
+│       ├── animations.css      # Keyframes & motion
+│       ├── layout.css          # App shell, grid, views
+│       └── components.css      # Buttons, cards, forms, modal, toast
 └── src/
-    ├── app.js                  # Composition Root — نقطه اتصال
+    ├── app.js                  # Composition root — main initializer
     ├── models/
-    │   ├── Card.js             # Entity — موجودیت کارت
-    │   ├── LeitnerConfig.js    # Value Object — تنظیمات سیستم
-    │   └── CardRepository.js  # Data Access — مدیریت ذخیره‌سازی
+    │   ├── Card.js             # Entity — card model
+    │   ├── LeitnerConfig.js    # Value object — system configuration
+    │   └── CardRepository.js   # Data access — storage management
     ├── views/
-    │   ├── BaseView.js         # Abstract Base — پایه مشترک
-    │   ├── DashboardView.js    # داشبورد و آمار
-    │   ├── ReviewView.js       # جلسه مرور فلش‌کارت
-    │   ├── CardsView.js        # لیست و مدیریت کارت‌ها
-    │   ├── ModalView.js        # مودال افزودن/ویرایش
-    │   └── ToastView.js        # اعلان‌های موقت
+    │   ├── BaseView.js         # Abstract base — shared view logic
+    │   ├── DashboardView.js    # Dashboard & statistics
+    │   ├── ReviewView.js       # Flashcard review session
+    │   ├── CardsView.js        # Card list & management
+    │   ├── ModalView.js        # Add/edit modal
+    │   └── ToastView.js        # Temporary notifications
     └── controllers/
-        ├── AppController.js    # Orchestrator — هماهنگ‌کننده اصلی
-        ├── ReviewController.js # مدیریت جلسه مرور
-        └── CardController.js   # عملیات CRUD کارت‌ها
-```
-
-
-<br/>
-
-## 🧠 الگوریتم لایتنر
-
-```
-جواب صحیح ✓  →  کارت به جعبه بالاتر (max: ۵)
-جواب اشتباه ✗  →  کارت به جعبه ۱ برمی‌گردد
-
-جعبه ۱ → مرور فردا          (۱ روز)
-جعبه ۲ → مرور پس‌فردا       (۲ روز)
-جعبه ۳ → مرور ۴ روز دیگر   (۴ روز)
-جعبه ۴ → مرور هفته آینده    (۸ روز)
-جعبه ۵ → مرور ۲ هفته دیگر  (۱۶ روز)
+        ├── AppController.js    # Orchestrator — main coordinator
+        ├── ReviewController.js # Review session logic
+        └── CardController.js   # CRUD operations for cards
 ```
 
 <br/>
 
-## 🚀 اجرا
+## 🧠 Leitner Algorithm
 
-این پروژه یک **Static Web App** است و به build tool یا سرور نیاز ندارد،
+```
+Correct answer ✓  →  Move card to the next box (max: 5)
+Wrong answer ✗    →  Send card back to Box 1
 
-<br/>
-
-## 🛠️ تکنولوژی‌ها
-
-| ابزار | کاربرد |
-|-------|--------|
-| **HTML5** | ساختار معنایی + ARIA |
-| **CSS3** | Custom Properties, Grid, Flexbox, Animations |
-| **JavaScript ES2022** | ES Modules, Classes, Optional Chaining, crypto.randomUUID |
-| **localStorage** | ذخیره‌سازی داده‌ها در مرورگر |
-
-بدون هیچ **framework** یا **کتابخانه خارجی** — Vanilla JS خالص.
+Box 1 → review tomorrow          (1 day)
+Box 2 → review in 2 days         (2 days)
+Box 3 → review in 4 days         (4 days)
+Box 4 → review next week         (8 days)
+Box 5 → review in 2 weeks        (16 days)
+```
 
 <br/>
 
-## 📄 لایسنس
+## 🚀 Run
 
-MIT License — آزاد برای استفاده، تغییر و توزیع.
+This project is a **Static Web App** and does not require any build tools or server.
+
+<br/>
+
+## 🛠️ Technologies
+
+| Tool | Purpose |
+|------|---------|
+| **HTML5** | Semantic structure + ARIA |
+| **CSS3** | Custom properties, Grid, Flexbox, animations |
+| **JavaScript ES2022** | ES modules, classes, optional chaining, crypto.randomUUID |
+| **localStorage** | Browser‑based data persistence |
+
+No **frameworks** or external libraries — pure Vanilla JS.
+
+<br/>
+
+## 📄 License
+
+MIT License — free to use, modify, and distribute.
 
 <br/>
 
 ## 🌐 Live Demo
 
-[مشاهده سایت](https://mahdiagasht-collab.github.io/leitner-box/)
+[View Website](https://mahdiagasht-collab.github.io/leitner-box/)
 
 <br/>
 
 ---
 
 <div align="center">
-  ساخته‌شده با ❤️ و Vanilla JS
+  Built with ❤️ and Vanilla JS
 </div>
